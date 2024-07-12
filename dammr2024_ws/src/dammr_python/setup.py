@@ -22,6 +22,7 @@ setup(
         'console_scripts': [
             'hello_world = dammr_python.hello_world:main',
             'str_publisher = dammr_python.str_publisher:main',
+            'dwm_publisher = dammr_python.dwm_publisher:main',
         ],
     },
 )
