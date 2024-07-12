@@ -37,6 +37,19 @@ And now run the example
 ros2 run dammr_python hello_world
 ```
 
+## Adding a new script
+
+You may add a new python script as ROS2 node by placing it in `<workspace>/src/dammr_python/dammr_python/` folder.
+
+After placing the script in the folder, make it executable
+```
+chmod a+x <path>/<script_name>
+```
+and add it to the `entry_points` section of `setup.py`
+
+Finally, `cd` to workspace folder and run `colcon build` 
+
+
 ## Remarks
 
 Remember to always run `colcon build` in the workspace folder (not home or source code folders).
@@ -197,14 +210,27 @@ Please check some of the command outputs, in particular listing configuration an
 
 ## Python script to communicate with the module
 
-Write a script that connects to the module, runs a selected command, receives the output from the module and prints it to the screen reformatted.
+1. Write a script that connects to the module, runs a selected command, receives the output from the module and prints it to the screen reformatted.
+
+   Hint: an example can be found in `dwm` branch, file `dwm_simple.py`
+
+2. Modify the script to run a command to print position in loop, print the coordinates on the screen
+
+   Hint: an example can be found in `dwm` branch, file `dwm_lep.py`
+
 
 ## ROS2 publisher
 
-Transform the script from the previous task to a ROS2 publisher.
-Consider what message types can be used.
+1. Create a package with the `hello_world` example, run the example to check if everything is correct
+
+2. Create a script of a string publisher following the [ROS2 tutorial](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node), run it and verify via `topic echo` that it works correctly
+
+   Hint: solutions can be found in `publisher` branch
 
 
+3. Transform the position reading script from the previous task to a ROS2 publisher. Begin with publishing the position as string. Then consider what message type would be better.
+
+4. Consider how the node can be extended (other topics? faut detection? configuration?
 
 
 # Appendix
