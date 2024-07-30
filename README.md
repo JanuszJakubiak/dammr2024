@@ -9,7 +9,7 @@ mkdir -p dammr2024_ws/src
 cd dammr2024_ws/
 colcon build
 ```
-The lines above create a workspace folder with `src` subfolder, then `colcon build`  is used to generate other necessary subfolders and files.
+The lines above create a workspace folder with the `src` subfolder. Then `colcon build` is used to generate other necessary subfolders and files.
 
 
 ## Source workspace setup files
@@ -39,7 +39,7 @@ ros2 run dammr_python hello_world
 
 ## Adding a new script
 
-You may add a new python script as ROS2 node by placing it in `<workspace>/src/dammr_python/dammr_python/` folder.
+You may add a new python script as a ROS2 node by placing it in  the `<workspace>/src/dammr_python/dammr_python/` folder.
 
 After placing the script in the folder, make it executable
 ```
@@ -47,7 +47,7 @@ chmod a+x <path>/<script_name>
 ```
 and add it to the `entry_points` section of `setup.py`
 
-Finally, `cd` to workspace folder and run `colcon build` 
+Finally, `cd` to the workspace folder and run `colcon build` 
 
 
 ## Remarks
@@ -83,7 +83,7 @@ ros2 interface show <msgtype>
 ## Nodes
 
 
-Similarly you may inspect nodes available
+Similarly you may inspect  available nodes with:
 ```
 ros2 node list
 ros2 node info <node
@@ -146,7 +146,7 @@ if __name__ == '__main__':
 ```
 
 Observe the output for different obstacles around the robot.
-You may try to visualize the data with matplotlib.
+You may try to visualize the data with `matplotlib`.
 Design a formula to detect obstacles to be avoided (you may use a circular or a rectangular emergency region)
 
 
@@ -198,7 +198,10 @@ if __name__ == '__main__':
 ```
 
 
-# Decawave
+# UWB tranceiver
+We will use Qorvo (former Decawave) ultra-wideband (UWB) [DWM1001-DEV](https://www.qorvo.com/products/p/DWM1001-DEV) development boards for real time location system (RTLS).
+Details and manuals may be found in the [documentation page](https://www.qorvo.com/products/p/DWM1001-DEV#documents).
+
 
 ## CLI of the DWM1001 module
 
@@ -212,26 +215,27 @@ Please check some of the command outputs, in particular listing configuration an
 
 1. Write a script that connects to the module, runs a selected command, receives the output from the module and prints it to the screen reformatted.
 
-   Hint: an example can be found in `dwm` branch, file `dwm_simple.py`
+   Hint: an example can be found in [`dwm`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/tree/dwm) branch, file [`dwm_simple.py`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/blob/dwm/dwm_simple.py) (switch to active branch with `git checkout dwm` in the repository)
 
 2. Modify the script to run a command to print position in loop, print the coordinates on the screen
 
-   Hint: an example can be found in `dwm` branch, file `dwm_lep.py`
+   Hint: an example can be found in [`dwm`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/tree/dwm) branch, file [`dwm_lep.py`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/blob/dwm/dwm_lep.py)
 
 
 ## ROS2 publisher
 
 1. Create a package with the `hello_world` example, run the example to check if everything is correct
 
-2. Create a script of a string publisher following the [ROS2 tutorial](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node), run it and verify via `topic echo` that it works correctly
+2. Create a script of a string publisher following the [ROS2 tutorial](https://docs.ros.org/en/iron/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html#write-the-publisher-node), run it and verify via `topic echo` that the script works correctly
 
-   Hint: solutions can be found in `publisher` branch
+   Hint: solutions can be found in the [`publisher`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/tree/publisher) branch (`git checkout publisher` in the repository)
 
 
-3. Transform the position reading script from the previous task to a ROS2 publisher. Begin with publishing the position as string. Then consider what message type would be better.
+3. Transform the position reading script from the previous task to a ROS2 publisher. Begin with publishing the position as a string. Then consider what message type would fit better.
 
-4. Consider how the node can be extended (other topics? faut detection? configuration?
+4. Consider how the node can be extended (using other topics? fault detection? configuration parameters?)
 
+An example of a solution may be found in the [`solution_string`](https://github.com/JanuszJakubiak/dammr2024-ros2workshop/tree/solution_string) branch.
 
 # Appendix
 
